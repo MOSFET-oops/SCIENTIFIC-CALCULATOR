@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <math.h>
+#define PI 3.14159265358979323846
 void basicMenu();
 void powerMenu();
 void trigonoMenu();
@@ -27,13 +28,13 @@ int modulus(int num1 , int num2)
 {
     return num1 % num2;
 }
-double power(double num1 , double num2)
+double power(double base , double exponent)
 {
-    return pow(num1, num2);
+    return pow(base , exponent);
 }
-double square(double num1 , double num2)
+double square(double num)
 {
-    return pow(num1, 2);
+    return square(num * num );
 }
 double squareroot(double num1 , double num2)
 {
@@ -47,29 +48,29 @@ double cuberoot(double num1 , double num2)
 {
     return cbrt(num1);
 }
-double sine(double num1 , double num2)
+double sine(double degree)
 {
-    return sin(num1);
+    return sin(degree * (PI /180));
 }
-double cosine(double num1 , double num2)
+double cosine(double degree)
 {
-    return cos(num1);
+    return cos(degree * (PI /180));
 }
-double tangent(double num1 , double num2)
+double tangent(double degree)
 {
-    return tan(num1);
+    return tan(degree * (PI /180));
 }
-double arcsine(double num1 , double num2)
+double arcsine(double degree)
 {
-    return asin(num1);
+    return asin(degree * (PI /180));
 }
-double arccosine(double num1 , double num2)
+double arccosine(double degree)
 {
-    return acos(num1);
+    return acos(degree * (PI /180));
 }
-double arctangent(double num1 , double num2)
+double arctangent(double degree)
 {
-    return atan(num1);
+    return atan(degree * (PI /180));
 }
 double logarithm(double num1 , double num2)
 {
@@ -262,10 +263,153 @@ int main(){
 while(choice !=6);
 }
 void powerMenu(){
-    printf("Under Construction\n");
+    int choice;
+    double num1 , num2 , result;
+
+    do{
+        printf("\n====================================\n");
+        printf("       POWER FUNCTIONS MENU\n");
+        printf("====================================\n");
+        printf("1. Power\n");
+        printf("2. Square\n");
+        printf("3. Square root\n");
+        printf("4. Cube\n");
+        printf("5. Cube root\n");
+        printf("6. Back to main menu\n");
+        printf("Enter your choice: \n");
+        scanf("%d" , &choice);
+
+        switch(choice){
+
+            case 1: 
+            double base , exponent , result;
+            printf("Enter the Base \n");
+            scanf("%lf" , &base);
+            printf("Enter the Exponent: \n");
+            scanf("%lf" , &exponent);
+            result = power(base , exponent);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 2:
+                printf("Enter the number: \n");
+                scanf("%lf" , &num1);
+                result = square(num1);
+                printf("Result: %.2lf \n" , result);
+                break;
+
+            case 3:
+                printf("Enter the number: \n");
+                scanf("%lf" , &num1);
+                if(num1 >= 0){
+                      result = squareroot(num1 , num2);
+                      printf("Result: %.2lf \n" , result);
+                }
+                else{
+                    printf("Error: Please enter a valid positive number.\n");
+                }
+                break;
+            
+            case 4:
+                printf("Enter the number: \n");
+                scanf("%lf" , &num1);
+                result = cube(num1 , num2);
+                printf("Result: %.2lf \n" , result);
+                break;
+
+            case 5:
+                printf("Enter the number: \n");
+                scanf("%lf" , &num1);
+                if(num1 >= 0){
+                    result = cuberoot(num1 , num2);
+                    printf("Result: %.2lf \n" , result);
+                }
+                else{
+                    printf("Enter a valid positive number. \n");
+                }
+                break;
+
+            case 6:
+                printf("Returning to main menu....\n");
+                break;
+
+            default:
+                printf("INVALID CHOICE!!!!! Please select a valid option. \n");
+        }
+    }
+    while(choice != 6);
 }
 void trigonoMenu(){
-    printf("Under Construction\n");
+    int choice;
+    double degree , result;
+
+    do{
+        printf("\n====================================\n");
+        printf("     TRIGONOMETRIC FUNCTIONS MENU\n");
+        printf("====================================\n");
+        printf("1. Sine\n");
+        printf("2. Cosine\n");
+        printf("3. Tangent\n");
+        printf("4. Arcsine\n");
+        printf("5. Arccosine\n");
+        printf("6. Arctangent\n");
+        printf("7. Back to main menu\n");
+        printf("Enter your choice: \n");
+        scanf("%d" , &choice);
+
+        switch(choice){
+
+            case 1:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = sin(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 2:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = cos(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 3:
+            printf("enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = tan(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 4:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = asin(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 5:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = acos(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 6:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            result = atan(degree);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 7: 
+            printf("Returning to main menu....\n");
+            break;
+
+        }
+    }
+    while(choice != 7);
+    
+    
 }
 void logMenu(){
     printf("Under Construction\n");
