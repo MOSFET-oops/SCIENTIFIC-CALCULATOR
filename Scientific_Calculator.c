@@ -34,7 +34,7 @@ double power(double base , double exponent)
 }
 double square(double num)
 {
-    return square(num * num );
+    return (num * num );
 }
 double squareroot(double num1 , double num2)
 {
@@ -48,29 +48,44 @@ double cuberoot(double num1 , double num2)
 {
     return cbrt(num1);
 }
-double sine(double degree)
+double sine(double degree , double radian)
 {
-    return sin(degree * (PI /180));
+    radian = degree * (PI / 180);
+    return sin(radian);
 }
-double cosine(double degree)
+double cosine(double degree , double radian)
 {
-    return cos(degree * (PI /180));
+    radian = degree * (PI /180);
+    return cos(radian);
 }
-double tangent(double degree)
+double tangent(double degree , double radian)
 {
-    return tan(degree * (PI /180));
+    radian = degree * (PI /180);
+    return tan(radian);
 }
-double arcsine(double degree)
+double cosec(double degree , double radian)
 {
-    return asin(degree * (PI /180));
+    radian = degree * (PI /180);
+    return 1/sin(radian);
 }
-double arccosine(double degree)
+double sec(double degree , double radian)
 {
-    return acos(degree * (PI /180));
+    radian = degree * (PI /180);
+    return 1/cos(radian );
 }
-double arctangent(double degree)
+double cot(double degree , double radian)
 {
-    return atan(degree * (PI /180));
+    radian = degree * (PI /180);
+    return 1/tan(radian);
+}
+double inverse_sine(double value){
+    return asin(value) * 180 / PI;
+}
+double inverse_cosine(double value){
+    return acos(value) * 180 / PI;
+}
+double inverse_tangent(double value){
+    return atan(value) * 180 / PI;
 }
 double logarithm(double num1 , double num2)
 {
@@ -84,9 +99,9 @@ double exponential(double num1 , double num2)
 {
     return exp(num1);
 }
-double factorial(double num1 , double num2)
+double factorial(double num)
 {
-    int n = (int)num1;
+    int n = (int)num;
     double result = 1;
     for(int i = 1; i <= n; i++)
     {
@@ -345,75 +360,235 @@ void trigonoMenu(){
 
     do{
         printf("\n====================================\n");
-        printf("     TRIGONOMETRIC FUNCTIONS MENU\n");
-        printf("====================================\n");
+        printf("    TRIGONOMETRIC FUNCTIONS MENU\n");
+        printf("=====================================\n");
         printf("1. Sine\n");
         printf("2. Cosine\n");
         printf("3. Tangent\n");
-        printf("4. Arcsine\n");
-        printf("5. Arccosine\n");
-        printf("6. Arctangent\n");
+        printf("4. Cosine\n");
+        printf("5. Sec\n");
+        printf("6. Cot\n");
+        printf("7. Arcsine\n");
+        printf("8. Arccosine\n");
+        printf("9. Arctangent\n");
         printf("7. Back to main menu\n");
         printf("Enter your choice: \n");
         scanf("%d" , &choice);
 
         switch(choice){
 
+            double value , radian;
+
             case 1:
             printf("Enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = sin(degree);
+            radian = degree * (PI / 180);
+            result = sin(radian);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 2:
             printf("Enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = cos(degree);
+            radian = degree * (PI / 180);
+            result = cos(radian);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 3:
             printf("enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = tan(degree);
+            radian = degree * (PI / 180);
+            result = tan(radian);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 4:
             printf("Enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = asin(degree);
+            radian = degree * (PI / 180);
+            result = cosec(degree , value);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 5:
             printf("Enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = acos(degree);
+            radian = degree * (PI / 180);
+            result = sec(degree , value);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 6:
             printf("Enter the angle in degree: \n");
             scanf("%lf" , &degree);
-            result = atan(degree);
+            radian = degree * (PI / 180);
+            result = cot(degree , value);
             printf("Result: %.2lf \n" , result);
             break;
 
             case 7: 
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            radian = degree * (PI / 180);
+            result = asin(value);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 8:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" , &degree);
+            radian = degree * (PI / 180);
+            result = acos(value);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 9:
+            printf("Enter the angle in degree: \n");
+            scanf("%lf" ,  &degree);
+            radian = degree * (PI / 180);
+            result = atan(value);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 10:
             printf("Returning to main menu....\n");
             break;
 
+            default:
+            printf("INVALID CHOICE!!!! Please select a valid option. \n");
+
         }
     }
-    while(choice != 7);
-    
-    
+    while(choice != 10);
 }
 void logMenu(){
-    printf("Under Construction\n");
+    int choice;
+    double num1 , result ;
+    do{
+
+        printf("\n=================================================\n");
+        printf("  LOGARITHMIC AND EXPONENTIAL FUNCTIONS MENU\n");
+        printf("=================================================\n");
+        printf("1. Logarithm (base 10) \n");
+        printf("2. Natural Logarithm (base e) \n");
+        printf("3. Exponential (e^x) \n");
+        printf("4. Back to main menu \n");
+        printf("Enter your choice: \n");
+        scanf("%d" , &choice);
+    
+        switch (choice){
+            case 1:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            if(num1 >= 0){
+               result = log10(num1);
+               printf("Result: %.4lf \n" , result);
+            }
+            else{
+
+                printf("Error: Logarithm is undefined. \n");
+            }
+            break;
+
+            case 2:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            if(num1 >= 0){
+                result = log(num1);
+                printf("Result: %.4lf \n" , result);
+            }
+            else{
+                printf("Error: Logarithm is undefined. \n");
+            }
+            break;
+
+            case 3:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            result = exp(num1);
+            printf("Result: %.4lf \n" , result); 
+            break;
+
+            case 4:
+            printf("Returning to main menu.... \n");
+            break;
+
+            default:
+            printf("INVALID CHOICE!!!! Please select a valid option. \n");
+
+        }
+    }
+    while(choice != 4);
+
 }
 void advancedMenu(){
-    printf("Under Construction\n");
+    int choice;
+    double num1 , num2 ,  result;
+    do{
+        printf("\n=================================================\n");
+        printf("       Advance/Miscellaneous Functions\n");
+        printf("=================================================\n");
+        printf("1. Factorial \n");
+        printf("2. Absolute Value \n");
+        printf("3. Floor Value \n");
+        printf("4. Ceil Value \n");
+        printf("5. Round Value \n");
+        printf("6. Percentage \n");
+        printf("7. More functions coming soon....... \n");
+        printf("8. Back to main menu. \n");
+        printf("Enter your choice: \n");
+        scanf("%d" , &choice);
+
+        switch (choice)
+        {
+            case 1:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            if(num1 < 0 || num1 != (int)num1){
+                printf("Error: Factorials are only defined for non-negative integers. \n");
+            }
+            else{
+                result = factorial(num1);
+                printf("Result: %.0lf \n" , result);
+            }
+            
+            case 2: 
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            result = fabs(num1);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 3:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            result = floor(num1);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 4:
+            printf("Enter the number: \n");
+            scanf("%lf" , num1);
+            result = ceil(num1);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 5:
+            printf("Enter the number: \n");
+            scanf("%lf" , &num1);
+            result = round(num1);
+            printf("Result: %.2lf \n" , result);
+            break;
+
+            case 6:
+            printf("Enter the percentage: \n");
+            scanf("%lf" , &num1);
+            printf("Enter the number: \n");
+            scanf("%lf" , &num2);
+            result = (num1 * num2)/100;
+        }
+    }
+
+    
 }
