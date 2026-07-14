@@ -587,8 +587,28 @@ void advancedMenu(){
             printf("Enter the number: \n");
             scanf("%lf" , &num2);
             result = (num1 * num2)/100;
+            printf("Result: %.2lf" , result);
+            break;
+
+            case 7:
+            printf("More functions coming soon are:- \n");
+            printf("Permutation(nPr) \n");
+            printf("Combination(nCr) \n");
+            printf("Quadratic Equations Solver(^2 & ^3) \n");
+            printf("Statistics \n");
+            printf("Matrix Equations \n");
+            printf("Number system converter \n");
+            printf("Memory Functions \n");
+            printf("Calculation History");
+
+            case 8:
+            printf("Returning to main menu.... \n");
+            break;
+
+            default:
+            printf("INVALID CHOICE!!!! Please select a valid option. \n");
+
         }
     }
-
-    
+    while(choice != 8);   
 }
