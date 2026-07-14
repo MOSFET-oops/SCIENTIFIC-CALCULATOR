@@ -371,7 +371,7 @@ void trigonoMenu(){
         printf("7. Arcsine\n");
         printf("8. Arccosine\n");
         printf("9. Arctangent\n");
-        printf("7. Back to main menu\n");
+        printf("10. Back to main menu\n");
         printf("Enter your choice: \n");
         scanf("%d" , &choice);
 
@@ -552,7 +552,8 @@ void advancedMenu(){
                 result = factorial(num1);
                 printf("Result: %.0lf \n" , result);
             }
-            
+            break;
+
             case 2: 
             printf("Enter the number: \n");
             scanf("%lf" , &num1);
@@ -569,7 +570,7 @@ void advancedMenu(){
 
             case 4:
             printf("Enter the number: \n");
-            scanf("%lf" , num1);
+            scanf("%lf" , &num1);
             result = ceil(num1);
             printf("Result: %.2lf \n" , result);
             break;
@@ -599,7 +600,8 @@ void advancedMenu(){
             printf("Matrix Equations \n");
             printf("Number system converter \n");
             printf("Memory Functions \n");
-            printf("Calculation History");
+            printf("Calculation History \n");
+            break;
 
             case 8:
             printf("Returning to main menu.... \n");
