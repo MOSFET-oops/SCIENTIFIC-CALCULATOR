@@ -129,6 +129,18 @@ double percentage(double num1 , double num2)
 {
     return (num1 / 100) * num2;
 }
+double permutation(int n , int r){
+    if(n < 0 || r < 0 || r > n){
+        return -1;
+    }
+    return factorial(n) / factorial (n - r);
+}
+double combination(int n , int r){
+    if(n < 0 || r < 0 || r > n){
+        return -1;
+    }
+    return factorial(n) / (factorial(r) * factorial(n - r)); 
+}
 
 int main(){
     int choice;
@@ -523,7 +535,7 @@ void logMenu(){
 
 }
 void advancedMenu(){
-    int choice;
+    int n , r , choice;
     double num1 , num2 ,  result;
     do{
         printf("\n=================================================\n");
@@ -535,8 +547,10 @@ void advancedMenu(){
         printf("4. Ceil Value \n");
         printf("5. Round Value \n");
         printf("6. Percentage \n");
-        printf("7. More functions coming soon....... \n");
-        printf("8. Back to main menu. \n");
+        printf("7. Permutation \n");
+        printf("8. Combination \n");
+        printf("9. More functions coming soon....... \n");
+        printf("10. Back to main menu. \n");
         printf("Enter your choice: \n");
         scanf("%d" , &choice);
 
@@ -592,9 +606,35 @@ void advancedMenu(){
             break;
 
             case 7:
+            printf("Enter N: \n");
+            scanf("%d" , &n);
+            printf("Enter R: \n");
+            scanf("%d" , &r);
+            result = permutation(n , r);
+            if(result == -1){
+                printf("Error! Ensure N >= R and N and R should be non-negative Integers. \n");
+            }
+            else{
+                printf("Result: %dP%d = %.0lf \n" , n , r , result);
+            }
+            break;
+
+            case 8:
+            printf("Enter N: \n");
+            scanf("%d" , &n);
+            printf("Enter R: \n");
+            scanf("%d" , &r);
+            result = combination(n , r);
+            if(result == -1){
+                printf("Error! Ensure N >= R and N and R should be non-negative Integers. \n");
+            }
+            else{
+                printf("Result: %dC%d = %.0lf \n" , n , r, result);
+            }
+            break;
+
+            case 9:
             printf("More functions coming soon are:- \n");
-            printf("Permutation(nPr) \n");
-            printf("Combination(nCr) \n");
             printf("Quadratic Equations Solver(^2 & ^3) \n");
             printf("Statistics \n");
             printf("Matrix Equations \n");
@@ -603,7 +643,7 @@ void advancedMenu(){
             printf("Calculation History \n");
             break;
 
-            case 8:
+            case 10:
             printf("Returning to main menu.... \n");
             break;
 
